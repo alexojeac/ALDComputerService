@@ -48,7 +48,7 @@ public class AlarmController {
         IAlarmListener al = new IAlarmListener() {
             @Override
             public void captureAlarm(AlarmEvent ev) {
-                JOptionPane.showMessageDialog(mainView, mainView.getMessage());
+                JOptionPane.showMessageDialog(mainView, mainView.getMessage(),"Alarm",JOptionPane.INFORMATION_MESSAGE);
                 mainView.setEnableAlarm(false);
                 view.setTextDisableEnableButton("Enable Alarm");
             }

@@ -45,12 +45,17 @@ public final class ComputerManagementController {
 
     private ActionListener setEditButtonActionListener() {
         ActionListener al = (ActionEvent e) -> {
-            editComputer = true;
-            view.componentsSetVisible(true);
-            view.setTableEnable(false);
             Computer editedComputer = model.getComputer(view.getSerialNumberSelectedComputer());
-            setDataComputer(editedComputer);
-            view.setButtonsEnable(false);
+            if (editedComputer != null) {
+                editComputer = true;
+                view.componentsSetVisible(true);
+                view.setTableEnable(false);
+                setDataComputer(editedComputer);
+                view.setButtonsEnable(false);
+            } else {
+                JOptionPane.showMessageDialog(view, "Select a computer to edit it");
+            }
+
         };
         return al;
     }

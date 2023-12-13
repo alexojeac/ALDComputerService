@@ -28,10 +28,14 @@ public class AlarmNotificationsDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         hourSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
+        hourSpinner.setToolTipText("Alarm Hour");
 
         minuteSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
+        minuteSpinner.setToolTipText("Alarm Minute");
 
         messageLabel.setText("Message:");
+
+        messageTextField.setToolTipText("Message that will display the alarm");
 
         setClockButton.setText("Set Clock");
 
@@ -41,9 +45,11 @@ public class AlarmNotificationsDialog extends javax.swing.JDialog {
 
         clockModebuttonGroup.add(twentyFourHoursModeRadioButton);
         twentyFourHoursModeRadioButton.setText("24H");
+        twentyFourHoursModeRadioButton.setToolTipText("Alarm is 24 or 12 hour mode");
 
         clockModebuttonGroup.add(twelveHoursModeRadioButton);
         twelveHoursModeRadioButton.setText("12H");
+        twelveHoursModeRadioButton.setToolTipText("Alarm is 24 or 12 hour mode");
 
         alertTimeLabel.setText("Alert Time:");
 

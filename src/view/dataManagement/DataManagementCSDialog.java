@@ -18,41 +18,85 @@ public class DataManagementCSDialog extends javax.swing.JDialog {
         telephoneTextField = new javax.swing.JTextField();
         employeesLabel = new javax.swing.JLabel();
         employeesSpinner = new javax.swing.JSpinner();
-        cancelButton = new javax.swing.JButton();
-        editButton = new javax.swing.JButton();
-        saveButton = new javax.swing.JButton();
         nameLabel = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
         addressLabel = new javax.swing.JLabel();
         addressTextField = new javax.swing.JTextField();
+        actionButtonsPanel = new javax.swing.JPanel();
+        cancelButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
+        buttonsSeparator = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         telephoneLabel.setText("Telephone:");
 
+        telephoneTextField.setToolTipText("Enterprise phone");
+
         employeesLabel.setText("Employees:");
 
-        cancelButton.setText("Cancel");
-
-        editButton.setText("Edit");
-
-        saveButton.setText("Save");
+        employeesSpinner.setToolTipText("Enterprise number of employees");
 
         nameLabel.setText("Name: ");
 
+        nameTextField.setToolTipText("Enterprise name");
+
         addressLabel.setText("Address:");
+
+        addressTextField.setToolTipText("Enterprise address");
+
+        actionButtonsPanel.setBackground(new java.awt.Color(153, 204, 255));
+
+        cancelButton.setBackground(new java.awt.Color(255, 153, 51));
+        cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/cancel_16.png"))); // NOI18N
+        cancelButton.setText("Cancel");
+
+        editButton.setBackground(new java.awt.Color(255, 153, 51));
+        editButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/edit_16.png"))); // NOI18N
+        editButton.setText("Edit");
+
+        saveButton.setBackground(new java.awt.Color(255, 153, 51));
+        saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/save_16.png"))); // NOI18N
+        saveButton.setText("Save");
+
+        buttonsSeparator.setBackground(new java.awt.Color(0, 0, 0));
+        buttonsSeparator.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout actionButtonsPanelLayout = new javax.swing.GroupLayout(actionButtonsPanel);
+        actionButtonsPanel.setLayout(actionButtonsPanelLayout);
+        actionButtonsPanelLayout.setHorizontalGroup(
+            actionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, actionButtonsPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(saveButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(editButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cancelButton)
+                .addContainerGap())
+            .addComponent(buttonsSeparator, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        actionButtonsPanelLayout.setVerticalGroup(
+            actionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(actionButtonsPanelLayout.createSequentialGroup()
+                .addComponent(buttonsSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(actionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelButton)
+                    .addComponent(editButton)
+                    .addComponent(saveButton))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(actionButtonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(employeesLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(employeesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(addressLabel)
@@ -64,16 +108,12 @@ public class DataManagementCSDialog extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(telephoneLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(telephoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(77, 77, 77))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(saveButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(editButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cancelButton)
-                .addGap(24, 24, 24))
+                        .addComponent(telephoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(employeesLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(employeesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,12 +134,8 @@ public class DataManagementCSDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(employeesLabel)
                     .addComponent(employeesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelButton)
-                    .addComponent(editButton)
-                    .addComponent(saveButton))
-                .addGap(14, 14, 14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(actionButtonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -198,8 +234,10 @@ public class DataManagementCSDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel actionButtonsPanel;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField addressTextField;
+    private javax.swing.JSeparator buttonsSeparator;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel employeesLabel;

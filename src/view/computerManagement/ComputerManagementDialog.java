@@ -15,14 +15,10 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         manageComputersTabbedPane = new javax.swing.JTabbedPane();
         manageComputersPanel = new javax.swing.JPanel();
         computersDataScrollPane = new javax.swing.JScrollPane();
         computersDataTable = new javax.swing.JTable();
-        addButton = new javax.swing.JButton();
-        editButton = new javax.swing.JButton();
-        deleteButton = new javax.swing.JButton();
         typeLabel = new javax.swing.JLabel();
         serialNumberLabel = new javax.swing.JLabel();
         brandLabel = new javax.swing.JLabel();
@@ -31,16 +27,19 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         serialNumberTextField = new javax.swing.JTextField();
         brandTextField = new javax.swing.JTextField();
         modelTextField = new javax.swing.JTextField();
-        saveButton = new javax.swing.JButton();
-        cancelButton = new javax.swing.JButton();
         batteryLifeLabel = new javax.swing.JLabel();
         batteryLifeSpinner = new javax.swing.JSpinner();
         formFactorLabel = new javax.swing.JLabel();
         inchesLabel = new javax.swing.JLabel();
         inchesSpinner = new javax.swing.JSpinner();
         formFactorComboBox = new javax.swing.JComboBox<>();
-
-        jLabel1.setText("jLabel1");
+        actionButtonsPanel = new javax.swing.JPanel();
+        addButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        saveCancelButtonsPanel = new javax.swing.JPanel();
+        saveButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -62,12 +61,6 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         });
         computersDataScrollPane.setViewportView(computersDataTable);
 
-        addButton.setText("Add");
-
-        editButton.setText("Edit");
-
-        deleteButton.setText("Delete");
-
         typeLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         typeLabel.setText("Type");
 
@@ -82,13 +75,18 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
 
         typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laptop", "Desktop Computer", "Single Board" }));
         typeComboBox.setSelectedIndex(-1);
+        typeComboBox.setToolTipText("Indicate the type of computer");
 
-        saveButton.setText("Save");
+        serialNumberTextField.setToolTipText("Computer Serial Number");
 
-        cancelButton.setText("Cancel");
+        brandTextField.setToolTipText("Computer brand");
+
+        modelTextField.setToolTipText("Computer model");
 
         batteryLifeLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         batteryLifeLabel.setText("Battery Life");
+
+        batteryLifeSpinner.setToolTipText("Laptop battery life in days");
 
         formFactorLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         formFactorLabel.setText("Form factor");
@@ -96,73 +94,129 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         inchesLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         inchesLabel.setText("Inches");
 
+        inchesSpinner.setToolTipText("Single board inches");
+
         formFactorComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATX", "Mini-ATX", "Micro-ATX", "ITX", "Mini-ITX", "Micro-ITX", "WTX", "BXT", "AT", "XT" }));
+        formFactorComboBox.setToolTipText("Motherboard form factor");
+
+        actionButtonsPanel.setBackground(new java.awt.Color(153, 204, 255));
+
+        addButton.setBackground(new java.awt.Color(255, 153, 51));
+        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/add_16.png"))); // NOI18N
+        addButton.setText("Add");
+
+        editButton.setBackground(new java.awt.Color(255, 153, 0));
+        editButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/edit_16.png"))); // NOI18N
+        editButton.setText("Edit");
+
+        deleteButton.setBackground(new java.awt.Color(255, 153, 0));
+        deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/paperBin_16.png"))); // NOI18N
+        deleteButton.setText("Delete");
+
+        javax.swing.GroupLayout actionButtonsPanelLayout = new javax.swing.GroupLayout(actionButtonsPanel);
+        actionButtonsPanel.setLayout(actionButtonsPanelLayout);
+        actionButtonsPanelLayout.setHorizontalGroup(
+            actionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, actionButtonsPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(deleteButton)
+                .addGap(18, 18, 18)
+                .addComponent(editButton)
+                .addGap(18, 18, 18)
+                .addComponent(addButton)
+                .addContainerGap())
+        );
+        actionButtonsPanelLayout.setVerticalGroup(
+            actionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(actionButtonsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(actionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButton)
+                    .addComponent(editButton)
+                    .addComponent(deleteButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        saveCancelButtonsPanel.setBackground(new java.awt.Color(153, 204, 255));
+
+        saveButton.setBackground(new java.awt.Color(255, 153, 51));
+        saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/save_16.png"))); // NOI18N
+        saveButton.setText("Save");
+
+        cancelButton.setBackground(new java.awt.Color(255, 153, 51));
+        cancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/cancel_16.png"))); // NOI18N
+        cancelButton.setText("Cancel");
+
+        javax.swing.GroupLayout saveCancelButtonsPanelLayout = new javax.swing.GroupLayout(saveCancelButtonsPanel);
+        saveCancelButtonsPanel.setLayout(saveCancelButtonsPanelLayout);
+        saveCancelButtonsPanelLayout.setHorizontalGroup(
+            saveCancelButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(saveCancelButtonsPanelLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(cancelButton)
+                .addGap(18, 18, 18)
+                .addComponent(saveButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        saveCancelButtonsPanelLayout.setVerticalGroup(
+            saveCancelButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(saveCancelButtonsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(saveCancelButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelButton)
+                    .addComponent(saveButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout manageComputersPanelLayout = new javax.swing.GroupLayout(manageComputersPanel);
         manageComputersPanel.setLayout(manageComputersPanelLayout);
         manageComputersPanelLayout.setHorizontalGroup(
             manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(actionButtonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(manageComputersPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(computersDataScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(manageComputersPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(computersDataScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageComputersPanelLayout.createSequentialGroup()
-                                    .addComponent(deleteButton)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(editButton)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(addButton))
-                                .addGroup(manageComputersPanelLayout.createSequentialGroup()
-                                    .addComponent(inchesLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(formFactorLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(batteryLifeLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(inchesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(formFactorComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(batteryLifeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(6, 6, 6)))
-                            .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(manageComputersPanelLayout.createSequentialGroup()
-                                    .addComponent(modelLabel)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(modelTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(manageComputersPanelLayout.createSequentialGroup()
-                                    .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(typeLabel)
-                                        .addComponent(serialNumberLabel))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(serialNumberTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(typeComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(manageComputersPanelLayout.createSequentialGroup()
-                                    .addComponent(brandLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(brandTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(manageComputersPanelLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(cancelButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(saveButton)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addComponent(inchesLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(formFactorLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(batteryLifeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(inchesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(formFactorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(batteryLifeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(manageComputersPanelLayout.createSequentialGroup()
+                            .addComponent(modelLabel)
+                            .addGap(18, 18, 18)
+                            .addComponent(modelTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(manageComputersPanelLayout.createSequentialGroup()
+                            .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(typeLabel)
+                                .addComponent(serialNumberLabel))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(serialNumberTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(typeComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(manageComputersPanelLayout.createSequentialGroup()
+                            .addComponent(brandLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(brandTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(saveCancelButtonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         manageComputersPanelLayout.setVerticalGroup(
             manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageComputersPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(computersDataScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton)
-                    .addComponent(editButton)
-                    .addComponent(deleteButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(actionButtonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(typeLabel)
                     .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -186,11 +240,8 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
                     .addComponent(inchesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(batteryLifeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(formFactorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelButton)
-                    .addComponent(saveButton))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(saveCancelButtonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         manageComputersTabbedPane.addTab("Computers", manageComputersPanel);
@@ -199,16 +250,13 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(manageComputersTabbedPane))
+            .addComponent(manageComputersTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(manageComputersTabbedPane)
-                .addContainerGap())
+                .addComponent(manageComputersTabbedPane))
         );
 
         manageComputersTabbedPane.getAccessibleContext().setAccessibleName("Computers");
@@ -227,6 +275,7 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         brandTextField.setVisible(visible);
         saveButton.setVisible(visible);
         cancelButton.setVisible(visible);
+        saveCancelButtonsPanel.setVisible(visible);
         batteryLifeLabel.setVisible(false);
         batteryLifeSpinner.setVisible(false);
         formFactorLabel.setVisible(false);
@@ -404,6 +453,7 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel actionButtonsPanel;
     private javax.swing.JButton addButton;
     private javax.swing.JLabel batteryLifeLabel;
     private javax.swing.JSpinner batteryLifeSpinner;
@@ -418,12 +468,12 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
     private javax.swing.JLabel formFactorLabel;
     private javax.swing.JLabel inchesLabel;
     private javax.swing.JSpinner inchesSpinner;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel manageComputersPanel;
     private javax.swing.JTabbedPane manageComputersTabbedPane;
     private javax.swing.JLabel modelLabel;
     private javax.swing.JTextField modelTextField;
     private javax.swing.JButton saveButton;
+    private javax.swing.JPanel saveCancelButtonsPanel;
     private javax.swing.JLabel serialNumberLabel;
     private javax.swing.JTextField serialNumberTextField;
     private javax.swing.JComboBox<String> typeComboBox;

@@ -13,7 +13,9 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        backgroundPanel = new javax.swing.JPanel();
         alarmClock = new clock.ClockBean();
+        logoLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         computerServicesMenuItem = new javax.swing.JMenuItem();
@@ -25,11 +27,40 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        backgroundPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/aldComputerServices_logo.png"))); // NOI18N
+
+        javax.swing.GroupLayout backgroundPanelLayout = new javax.swing.GroupLayout(backgroundPanel);
+        backgroundPanel.setLayout(backgroundPanelLayout);
+        backgroundPanelLayout.setHorizontalGroup(
+            backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(alarmClock, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(backgroundPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(logoLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        backgroundPanelLayout.setVerticalGroup(
+            backgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(logoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(alarmClock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         fileMenu.setText("File");
 
-        computerServicesMenuItem.setText("Computer Services");
+        computerServicesMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        computerServicesMenuItem.setText("Computer Services...");
         fileMenu.add(computerServicesMenuItem);
 
+        quitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         quitMenuItem.setText("Quit");
         fileMenu.add(quitMenuItem);
 
@@ -37,14 +68,17 @@ public class MainJFrame extends javax.swing.JFrame {
 
         computersMenu.setText("Computers");
 
-        manageComputersMenuItem.setText("Manage computers");
+        manageComputersMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        manageComputersMenuItem.setText("Manage computers...");
         computersMenu.add(manageComputersMenuItem);
 
         menuBar.add(computersMenu);
 
-        alarmMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/alarm.png"))); // NOI18N
+        alarmMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/alarm_16.png"))); // NOI18N
+        alarmMenu.setToolTipText("Notifications Dialog");
 
-        notificationsMenuItem.setText("Notifications");
+        notificationsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        notificationsMenuItem.setText("Notifications...");
         alarmMenu.add(notificationsMenuItem);
 
         menuBar.add(alarmMenu);
@@ -55,17 +89,11 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(257, Short.MAX_VALUE)
-                .addComponent(alarmClock, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+            .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(253, Short.MAX_VALUE)
-                .addComponent(alarmClock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -139,9 +167,11 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private clock.ClockBean alarmClock;
     private javax.swing.JMenu alarmMenu;
+    private javax.swing.JPanel backgroundPanel;
     private javax.swing.JMenuItem computerServicesMenuItem;
     private javax.swing.JMenu computersMenu;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JLabel logoLabel;
     private javax.swing.JMenuItem manageComputersMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem notificationsMenuItem;
