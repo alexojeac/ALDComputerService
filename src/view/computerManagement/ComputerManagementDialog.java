@@ -365,11 +365,11 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         this.serialNumberTextField.setText(serialNumber);
     }
 
-    public void setSelectedComputer(String typeComputer) {
+    public void setSelectedComputerType(String typeComputer) {
         this.typeComboBox.setSelectedItem(typeComputer);
     }
     
-    public String getSelectedComputer() {
+    public String getSelectedComputerType() {
         return String.valueOf(typeComboBox.getSelectedItem());
     }
 
