@@ -1,15 +1,19 @@
 package model.computers;
 
-public class Laptop extends Computer{
+import java.util.ArrayList;
+import model.aldComputerServices.services.Service;
+
+public class Laptop extends Computer {
+
     private int batteryLife; //Useful life in days
 
     public Laptop() {
         super();
         this.batteryLife = 0;
     }
-    
-    public Laptop(String serialNumber, String brand, String model, int baterryLife) {
-        super(serialNumber, brand, model);
+
+    public Laptop(String serialNumber, String brand, String model, int baterryLife, ArrayList<Service> services) {
+        super(serialNumber, brand, model, services);
         this.batteryLife = batteryLife;
     }
 
@@ -20,7 +24,5 @@ public class Laptop extends Computer{
     public void setBatteryLife(int batteryLife) {
         this.batteryLife = batteryLife;
     }
-    
-    
-    
+
 }

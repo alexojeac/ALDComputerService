@@ -1,15 +1,19 @@
 package model.computers;
 
-public class ComputerDesktop extends Computer{
+import java.util.ArrayList;
+import model.aldComputerServices.services.Service;
+
+public class ComputerDesktop extends Computer {
+
     private String formFactor;
 
     public ComputerDesktop() {
         super();
         this.formFactor = "";
     }
-    
-    public ComputerDesktop(String serialNumber, String brand, String model, String formFactor) {
-        super(serialNumber, brand, model);
+
+    public ComputerDesktop(String serialNumber, String brand, String model, String formFactor, ArrayList<Service> services) {
+        super(serialNumber, brand, model, services);
         this.formFactor = formFactor;
     }
 
@@ -21,6 +25,4 @@ public class ComputerDesktop extends Computer{
         this.formFactor = formFactor;
     }
 
-   
-    
 }

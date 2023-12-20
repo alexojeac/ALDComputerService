@@ -1,5 +1,6 @@
 package view.computerManagement;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -34,14 +35,23 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         inchesSpinner = new javax.swing.JSpinner();
         formFactorComboBox = new javax.swing.JComboBox<>();
         actionButtonsPanel = new javax.swing.JPanel();
-        addButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
         saveCancelButtonsPanel = new javax.swing.JPanel();
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        servicesPanel = new javax.swing.JPanel();
+        servicesTableScrollPane = new javax.swing.JScrollPane();
+        servicesDataTable = new javax.swing.JTable();
+        servicesActionButtonsPanel = new javax.swing.JPanel();
+        editServiceButton = new javax.swing.JButton();
+        deleteServiceButton = new javax.swing.JButton();
+        addServiceButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        setSize(new java.awt.Dimension(480, 500));
 
         computersDataTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,10 +111,6 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
 
         actionButtonsPanel.setBackground(new java.awt.Color(153, 204, 255));
 
-        addButton.setBackground(new java.awt.Color(255, 153, 51));
-        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/add_16.png"))); // NOI18N
-        addButton.setText("Add");
-
         editButton.setBackground(new java.awt.Color(255, 153, 0));
         editButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/edit_16.png"))); // NOI18N
         editButton.setText("Edit");
@@ -113,27 +119,31 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/paperBin_16.png"))); // NOI18N
         deleteButton.setText("Delete");
 
+        addButton.setBackground(new java.awt.Color(255, 153, 51));
+        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/add_16.png"))); // NOI18N
+        addButton.setText("Add");
+
         javax.swing.GroupLayout actionButtonsPanelLayout = new javax.swing.GroupLayout(actionButtonsPanel);
         actionButtonsPanel.setLayout(actionButtonsPanelLayout);
         actionButtonsPanelLayout.setHorizontalGroup(
             actionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, actionButtonsPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(deleteButton)
-                .addGap(18, 18, 18)
-                .addComponent(editButton)
-                .addGap(18, 18, 18)
                 .addComponent(addButton)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteButton)
+                .addGap(7, 7, 7))
         );
         actionButtonsPanelLayout.setVerticalGroup(
             actionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(actionButtonsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(actionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton)
                     .addComponent(editButton)
-                    .addComponent(deleteButton))
+                    .addComponent(deleteButton)
+                    .addComponent(addButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -152,11 +162,11 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         saveCancelButtonsPanelLayout.setHorizontalGroup(
             saveCancelButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(saveCancelButtonsPanelLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(cancelButton)
-                .addGap(18, 18, 18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(saveButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(cancelButton)
+                .addContainerGap())
         );
         saveCancelButtonsPanelLayout.setVerticalGroup(
             saveCancelButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +186,6 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
             .addGroup(manageComputersPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(manageComputersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(computersDataScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(manageComputersPanelLayout.createSequentialGroup()
                         .addComponent(inchesLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -205,7 +214,8 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
                         .addGroup(manageComputersPanelLayout.createSequentialGroup()
                             .addComponent(brandLabel)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(brandTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(brandTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(computersDataScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(saveCancelButtonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -240,11 +250,89 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
                     .addComponent(inchesSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(batteryLifeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(formFactorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(saveCancelButtonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         manageComputersTabbedPane.addTab("Computers", manageComputersPanel);
+
+        servicesDataTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Description", "Init date", "End date", "Name Contact", "Phone Contact", "Observations", "Price", "Done"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        servicesTableScrollPane.setViewportView(servicesDataTable);
+
+        servicesActionButtonsPanel.setBackground(new java.awt.Color(153, 204, 255));
+
+        editServiceButton.setBackground(new java.awt.Color(255, 153, 0));
+        editServiceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/edit_16.png"))); // NOI18N
+        editServiceButton.setText("Edit");
+
+        deleteServiceButton.setBackground(new java.awt.Color(255, 153, 0));
+        deleteServiceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/paperBin_16.png"))); // NOI18N
+        deleteServiceButton.setText("Delete");
+
+        addServiceButton.setBackground(new java.awt.Color(255, 153, 51));
+        addServiceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectIcons/add_16.png"))); // NOI18N
+        addServiceButton.setText("Add");
+
+        javax.swing.GroupLayout servicesActionButtonsPanelLayout = new javax.swing.GroupLayout(servicesActionButtonsPanel);
+        servicesActionButtonsPanel.setLayout(servicesActionButtonsPanelLayout);
+        servicesActionButtonsPanelLayout.setHorizontalGroup(
+            servicesActionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, servicesActionButtonsPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addServiceButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editServiceButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteServiceButton)
+                .addGap(7, 7, 7))
+        );
+        servicesActionButtonsPanelLayout.setVerticalGroup(
+            servicesActionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(servicesActionButtonsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(servicesActionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editServiceButton)
+                    .addComponent(deleteServiceButton)
+                    .addComponent(addServiceButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout servicesPanelLayout = new javax.swing.GroupLayout(servicesPanel);
+        servicesPanel.setLayout(servicesPanelLayout);
+        servicesPanelLayout.setHorizontalGroup(
+            servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(servicesPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(servicesTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(servicesActionButtonsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        servicesPanelLayout.setVerticalGroup(
+            servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(servicesPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(servicesTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(servicesActionButtonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(282, Short.MAX_VALUE))
+        );
+
+        manageComputersTabbedPane.addTab("Services", servicesPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -293,6 +381,7 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
                 formFactorComboBox.setVisible(false);
                 inchesLabel.setVisible(false);
                 inchesSpinner.setVisible(false);
+                dateComputerEnable(true);
                 break;
             case "Desktop Computer":
                 batteryLifeLabel.setVisible(false);
@@ -301,6 +390,7 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
                 formFactorComboBox.setVisible(true);
                 inchesLabel.setVisible(false);
                 inchesSpinner.setVisible(false);
+                dateComputerEnable(true);
                 break;
             case "Single Board":
                 batteryLifeLabel.setVisible(false);
@@ -309,6 +399,7 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
                 formFactorComboBox.setVisible(false);
                 inchesLabel.setVisible(true);
                 inchesSpinner.setVisible(true);
+                dateComputerEnable(true);
                 break;
             default:
                 batteryLifeLabel.setVisible(false);
@@ -317,7 +408,22 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
                 formFactorComboBox.setVisible(false);
                 inchesLabel.setVisible(false);
                 inchesSpinner.setVisible(false);
+                dateComputerEnable(false);
                 break;
+        }
+    }
+
+    public void dateComputerEnable(boolean enable) {
+        this.serialNumberTextField.setEnabled(enable);
+        this.brandTextField.setEnabled(enable);
+        this.modelTextField.setEnabled(enable);
+    }
+
+    public void setNormalSize(boolean b) {
+        if (b) {
+            this.setSize(550, 250);
+        } else {
+            this.setSize(550, 535);
         }
     }
 
@@ -338,12 +444,12 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         computersDataTable.revalidate();
         computersDataTable.repaint();
     }
-    
+
     public void setTableEnable(boolean enable) {
         this.computersDataTable.setEnabled(enable);
     }
 
-    public void addRowTable(Vector row) {
+    public void addRowComputersTable(Vector row) {
         DefaultTableModel model = (DefaultTableModel) this.computersDataTable.getModel();
         model.addRow(row);
     }
@@ -368,7 +474,7 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
     public void setSelectedComputerType(String typeComputer) {
         this.typeComboBox.setSelectedItem(typeComputer);
     }
-    
+
     public String getSelectedComputerType() {
         return String.valueOf(typeComboBox.getSelectedItem());
     }
@@ -392,7 +498,7 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
     public int getBatteryLife() {
         return (int) this.batteryLifeSpinner.getValue();
     }
-    
+
     public void setBatteryLife(int batteryLife) {
         this.batteryLifeSpinner.setValue(batteryLife);
     }
@@ -400,11 +506,11 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
     public String getFormFactor() {
         return String.valueOf(this.formFactorComboBox.getSelectedItem());
     }
-    
+
     public void setFormFactor(String formFactor) {
         this.formFactorComboBox.setSelectedItem(formFactor);
     }
-    
+
     public void setInches(int inches) {
         this.inchesSpinner.setValue(inches);
     }
@@ -421,11 +527,21 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         batteryLifeSpinner.setValue(0);
         inchesSpinner.setValue(0);
     }
-    
+
     public void setButtonsEnable(boolean enable) {
         this.editButton.setEnabled(enable);
         this.addButton.setEnabled(enable);
         this.deleteButton.setEnabled(enable);
+    }
+
+    public void setSerialNumberError(boolean error) {
+        if (error) {
+            this.serialNumberTextField.setForeground(Color.RED);
+            this.serialNumberTextField.requestFocus();
+        } else {
+            this.serialNumberTextField.setForeground(Color.BLACK);
+        }
+
     }
 
     public void addAddButtonListener(ActionListener listener) {
@@ -455,6 +571,7 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel actionButtonsPanel;
     private javax.swing.JButton addButton;
+    private javax.swing.JButton addServiceButton;
     private javax.swing.JLabel batteryLifeLabel;
     private javax.swing.JSpinner batteryLifeSpinner;
     private javax.swing.JLabel brandLabel;
@@ -463,7 +580,9 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane computersDataScrollPane;
     private javax.swing.JTable computersDataTable;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JButton deleteServiceButton;
     private javax.swing.JButton editButton;
+    private javax.swing.JButton editServiceButton;
     private javax.swing.JComboBox<String> formFactorComboBox;
     private javax.swing.JLabel formFactorLabel;
     private javax.swing.JLabel inchesLabel;
@@ -476,6 +595,10 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
     private javax.swing.JPanel saveCancelButtonsPanel;
     private javax.swing.JLabel serialNumberLabel;
     private javax.swing.JTextField serialNumberTextField;
+    private javax.swing.JPanel servicesActionButtonsPanel;
+    private javax.swing.JTable servicesDataTable;
+    private javax.swing.JPanel servicesPanel;
+    private javax.swing.JScrollPane servicesTableScrollPane;
     private javax.swing.JComboBox<String> typeComboBox;
     private javax.swing.JLabel typeLabel;
     // End of variables declaration//GEN-END:variables

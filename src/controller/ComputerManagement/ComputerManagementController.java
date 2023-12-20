@@ -31,6 +31,8 @@ public final class ComputerManagementController {
         this.view.addSaveButtonListener(this.setSaveButtonActionListener());
         this.view.addCancelButtonListener(this.setCancelButtonActionListener());
         this.view.addtypeComboBoxListener(this.setTypeComboBoxActionListener());
+        this.view.setNormalSize(true);
+        this.view.dateComputerEnable(false);
         repaintTable();
     }
 
@@ -39,6 +41,7 @@ public final class ComputerManagementController {
             view.componentsSetVisible(true);
             view.setTableEnable(false);
             view.setButtonsEnable(false);
+            view.setNormalSize(false);
         };
         return al;
     }
@@ -52,6 +55,7 @@ public final class ComputerManagementController {
                 view.setTableEnable(false);
                 setDataComputer(editedComputer);
                 view.setButtonsEnable(false);
+                view.setNormalSize(false);
             } else {
                 JOptionPane.showMessageDialog(view, "Select a computer to edit it");
             }
@@ -70,31 +74,36 @@ public final class ComputerManagementController {
 
     private ActionListener setSaveButtonActionListener() {
         ActionListener al = (ActionEvent e) -> {
-            if (isComputer(view.getSelectedComputerType())) {
-                switch (view.getSelectedComputerType()) {
-                    case "Laptop":
-                        computer = newLaptop();
-                        addComputerToTable(computer);
-                        break;
-                    case "Desktop Computer":
-                        computer = newComputerDesktop();
-                        addComputerToTable(computer);
-
-                        break;
-                    case "Single Board":
-                        computer = newSingleBoard();
-
-                        addComputerToTable(computer);
-                        break;
-                }
-            } else {
-                JOptionPane.showMessageDialog(view, "To introduce a new computer, it must have a type");
+            switch (view.getSelectedComputerType()) {
+                case "Laptop":
+                    computer = newLaptop();
+                    if (addComputerToTable(computer)) {
+                        view.setSerialNumberError(false);
+                        resetView();
+                    } else {
+                        view.setSerialNumberError(true);
+                    }
+                    break;
+                case "Desktop Computer":
+                    computer = newComputerDesktop();
+                    if (addComputerToTable(computer)) {
+                        view.setSerialNumberError(false);
+                        resetView();
+                    } else {
+                        view.setSerialNumberError(true);
+                    }
+                    break;
+                case "Single Board":
+                    computer = newSingleBoard();
+                    if (addComputerToTable(computer)) {
+                        view.setSerialNumberError(false);
+                        resetView();
+                    } else {
+                        view.setSerialNumberError(true);
+                    }
+                    break;
             }
             repaintTable();
-            view.componentsSetVisible(false);
-            view.setDefault();
-            view.setTableEnable(true);
-            view.setButtonsEnable(true);
         };
         return al;
     }
@@ -106,6 +115,7 @@ public final class ComputerManagementController {
             view.setTableEnable(true);
             editComputer = false;
             view.setButtonsEnable(true);
+            view.setNormalSize(true);
         };
         return al;
     }
@@ -147,20 +157,22 @@ public final class ComputerManagementController {
         return singleBoard;
     }
 
-    private void addComputerToTable(Computer newComputer) {
-
+    private boolean addComputerToTable(Computer newComputer) {
+        if (editComputer) {
+            model.removeComputer(view.getSerialNumberSelectedComputer());
+        }
         if (model.isComputer(newComputer.getSerialNumber())) {
             JOptionPane.showMessageDialog(view, "A computer with the entered serial number already exists");
+            return false;
         } else {
             if (!computer.getSerialNumber().equals("")) {
                 model.addComputer(computer);
+                return true;
             } else {
                 JOptionPane.showMessageDialog(view, "To introduce a new computer, it must have a serial number");
+                return false;
             }
 
-            if (editComputer) {
-                model.removeComputer(view.getSerialNumberSelectedComputer());
-            }
         }
     }
 
@@ -181,7 +193,7 @@ public final class ComputerManagementController {
                 row.add("Single Board");
             }
 
-            view.addRowTable(row);
+            view.addRowComputersTable(row);
         }
 
     }
@@ -202,7 +214,12 @@ public final class ComputerManagementController {
         }
     }
 
-    private boolean isComputer(String typeComputer) {
-        return (typeComputer.equals("Laptop")) || (typeComputer.equals("Desktop Computer")) || (typeComputer.equals("Single Board"));
+    public void resetView() {
+        view.componentsSetVisible(false);
+        view.setDefault();
+        view.setTableEnable(true);
+        view.setButtonsEnable(true);
+        view.setNormalSize(true);
     }
+
 }
