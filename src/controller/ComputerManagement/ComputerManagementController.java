@@ -177,7 +177,7 @@ public final class ComputerManagementController {
     }
 
     private void repaintTable() {
-        view.removeDataTable();
+        view.removeComputersDataTable();
         computers = model.getComputers();
 
         for (Computer c : computers.values()) {

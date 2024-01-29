@@ -3,6 +3,7 @@ package view.computerManagement;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.Vector;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ComputerManagementDialog extends javax.swing.JDialog {
@@ -437,30 +438,50 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         return serialNumber;
     }
 
-    public void removeDataTable() {
-        DefaultTableModel model = (DefaultTableModel) this.computersDataTable.getModel();
+    // Table operations
+    public void removeDataTable(JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
-        computersDataTable.clearSelection();
-        computersDataTable.revalidate();
-        computersDataTable.repaint();
+        table.clearSelection();
+        table.revalidate();
+        table.repaint();
+    }
+
+    public void removeComputersDataTable() {
+        removeDataTable(computersDataTable);
+    }
+
+    public void removeServicesDataTable() {
+        removeDataTable(servicesDataTable);
     }
 
     public void setTableEnable(boolean enable) {
         this.computersDataTable.setEnabled(enable);
     }
 
-    public void addRowComputersTable(Vector row) {
-        DefaultTableModel model = (DefaultTableModel) this.computersDataTable.getModel();
+    public void addRowTable(Vector row, JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.addRow(row);
     }
 
-    public void deleteRow() {
-        DefaultTableModel model = (DefaultTableModel) this.computersDataTable.getModel();
-        model.removeRow(getSelectedRow());
+    public void addRowComputersTable(Vector row) {
+        addRowTable(row, computersDataTable);
     }
 
-    public int getSelectedRow() {
-        return this.computersDataTable.getSelectedRow();
+    public void addRowServicesTable(Vector row) {
+        addRowTable(row, servicesDataTable);
+    }
+
+    public int getSelectedRow(JTable table) {
+        return table.getSelectedRow();
+    }
+
+    public int getSelectedComputerRow() {
+        return getSelectedRow(computersDataTable);
+    }
+
+    public int getSelectedServiceRow() {
+        return getSelectedRow(servicesDataTable);
     }
 
     public String getSerialNumber() {
@@ -541,7 +562,6 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
         } else {
             this.serialNumberTextField.setForeground(Color.BLACK);
         }
-
     }
 
     public void addAddButtonListener(ActionListener listener) {
@@ -602,4 +622,5 @@ public class ComputerManagementDialog extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> typeComboBox;
     private javax.swing.JLabel typeLabel;
     // End of variables declaration//GEN-END:variables
+
 }

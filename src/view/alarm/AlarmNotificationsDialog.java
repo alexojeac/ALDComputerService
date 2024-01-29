@@ -26,6 +26,7 @@ public class AlarmNotificationsDialog extends javax.swing.JDialog {
         alertTimeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         hourSpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
         hourSpinner.setToolTipText("Alarm Hour");

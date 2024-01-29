@@ -1,7 +1,7 @@
 package model.computers;
 
 import java.util.ArrayList;
-import model.aldComputerServices.services.Service;
+import model.services.Service;
 
 public class ComputerDesktop extends Computer {
 

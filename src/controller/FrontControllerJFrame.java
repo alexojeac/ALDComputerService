@@ -3,29 +3,37 @@ package controller;
 import controller.ComputerManagement.ComputerManagementController;
 import controller.alarm.AlarmController;
 import controller.aldComputerService.AldComputerServiceController;
+import controller.reports.IncomeReportController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import model.aldComputerServices.AldComputerService;
 import view.dataManagement.DataManagementCSDialog;
 import view.MainJFrame;
 import view.alarm.AlarmNotificationsDialog;
 import view.computerManagement.ComputerManagementDialog;
+import view.reports.IncomeReportDialog;
+import javax.help.*;
+import java.net.*;
 
 public class FrontControllerJFrame {
 
-    private MainJFrame view;
-    private AldComputerService model;
+    private final MainJFrame view;
+    private final AldComputerService model;
 
-    public FrontControllerJFrame(MainJFrame view, AldComputerService model) {
+    public FrontControllerJFrame(MainJFrame view, AldComputerService model) throws MalformedURLException, HelpSetException {
         this.view = view;
         this.model = model;
-        this.view.addQuitMenuItemListener(this.setQuitMenuItemActionListener());
-        this.view.addComputerServiceMenuItemListener(this.setComputerServiceMenuItemActionListener());
-        this.view.addManageComputersMenuItemListener(this.setManageComputersMenuItemActionListener());
-        this.view.addNotificationsMenuItemListener(this.setNotificationsMenuItemActionListener());
+        this.view.setBackgroundFocusable(true);
+        this.view.addQuitMenuItemListener(this.getQuitMenuItemActionListener());
+        this.view.addComputerServiceMenuItemListener(this.getComputerServiceMenuItemActionListener());
+        this.view.addManageComputersMenuItemListener(this.getManageComputersMenuItemActionListener());
+        this.view.addNotificationsMenuItemListener(this.getNotificationsMenuItemActionListener());
+        this.view.addIncomeReportMenuItemListener(this.getIncomeReportsMenuItemActionListener());
+        initHelp();
     }
 
-    private ActionListener setQuitMenuItemActionListener() {
+    private ActionListener getQuitMenuItemActionListener() {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,7 +44,7 @@ public class FrontControllerJFrame {
         return al;
     }
 
-    private ActionListener setComputerServiceMenuItemActionListener() {
+    private ActionListener getComputerServiceMenuItemActionListener() {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -47,8 +55,8 @@ public class FrontControllerJFrame {
         };
         return al;
     }
-    
-    private ActionListener setManageComputersMenuItemActionListener() {
+
+    private ActionListener getManageComputersMenuItemActionListener() {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -59,8 +67,8 @@ public class FrontControllerJFrame {
         };
         return al;
     }
-    
-    private ActionListener setNotificationsMenuItemActionListener() {
+
+    private ActionListener getNotificationsMenuItemActionListener() {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -71,4 +79,26 @@ public class FrontControllerJFrame {
         };
         return al;
     }
+
+    private ActionListener getIncomeReportsMenuItemActionListener() {
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                IncomeReportDialog reportsView = new IncomeReportDialog(view, true);
+                IncomeReportController reportsController = new IncomeReportController(reportsView);
+                reportsView.setVisible(true);
+            }
+        };
+        return al;
+    }
+
+    private void initHelp() throws MalformedURLException, HelpSetException {
+        File helpFile = new File("help/help_set.hs");
+        URL hsURL = helpFile.toURI().toURL();
+        HelpSet helpSet = new HelpSet(getClass().getClassLoader(), hsURL);
+        HelpBroker hb = helpSet.createHelpBroker();
+        hb.enableHelpKey(view.getContentPane(), "app", helpSet);
+        hb.enableHelpOnButton(view.getHelpMenuItem(), "app", helpSet);
+    }
+
 }
